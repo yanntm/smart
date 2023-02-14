@@ -51,7 +51,7 @@ extern parse_module* pm;
 #define MCC_STATE_SPACE 1
 #define MCC_UPPER_BOUNDS 0
 // #define MCC_DEADLOCK
-#define ONLY_STATE_SPACE
+// #define ONLY_STATE_SPACE
 // #define TEST_HYB
 
 // **************************************************************************
@@ -1249,9 +1249,9 @@ void meddly_otfsat::buildRSS(meddly_varoption &x)
     em->cout().flush();
 #endif
 
-    MEDDLY::node_handle mxd = NSF->getBoundedMonolithicNSF();
     shared_ddedge* d = new shared_ddedge(NSF->getRelForest());
-    d->E.set(mxd);
+    NSF->getBoundedMonolithicNSF(d->E);
+
     setNSF(d);
 
     clearMeddlyComputeTable(x, *NSF);
